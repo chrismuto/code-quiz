@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/reset.css">
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <!-- div element containing button and timer at top -->
+    <div id="head">    
+        <!-- make a button to view high scores -->
+        <button type="button" id="highScoreButton">View High Scores</button>
+        
+        <!-- timer for quiz -->
+        <p><span id="timer">75</span> seconds left</p>
+    </div>
+    
+    <!-- div containing all quiz elements -->
+    <div id="quizBody">
+        <h1>
+            Code Quiz
+        </h1>
+        <p>Try to answer all the multiple choice questions in the time given. Each wrong answer will subtract 10 seconds from your remaining timer. Keep practicing and try to get a new high score!</p>
+        <!-- make a button to start quiz -->
+        <button type="button" id="startButton">Start Quiz</button>
+        
+        <!-- make an element to show each question -->
+        <div class="questionContainer" id="question1">
+            <h2>Objects store informations as a pair containt a key and ____?</h2>
+            <!-- make <ul> element to contain the answers -->
+            <ul class="answerList" id="answers1">
+                <li><button type="submit" class="answer wrongAnswer">Lock</button></li>
+                <li><button type="submit" class="answer rightAnswer">Value</button></li>
+                <li><button type="submit" class="answer wrongAnswer">Variable</button></li>
+                <li><button type="submit" class="answer wrongAnswer">Array</button></li>
+            </ul>
+        </div>
+
+        <div class="questionContainer" id="question2">
+            <h2>Placeholder</h2>
+            <!-- make <ul> element to contain the answers -->
+            <ul class="answerList" id="answers2">
+                <!-- remember to match correct answer to rightAnswer -->
+                <li><button type="submit" class="answer wrongAnswer">Lock</button></li>
+                <li><button type="submit" class="answer rightAnswer">Value</button></li>
+                <li><button type="submit" class="answer wrongAnswer">Variable</button></li>
+                <li><button type="submit" class="answer wrongAnswer">Array</button></li>
+            </ul>
+        </div>
+
+        <div class="questionContainer" id="question3">
+            <h2>Placeholder</h2>
+            <!-- make <ul> element to contain the answers -->
+            <ul class="answerList" id="answers3">
+                <!-- remember to match correct answer to rightAnswer -->
+                <li><button type="submit" class="answer wrongAnswer">Lock</button></li>
+                <li><button type="submit" class="answer rightAnswer">Value</button></li>
+                <li><button type="submit" class="answer wrongAnswer">Variable</button></li>
+                <li><button type="submit" class="answer wrongAnswer">Array</button></li>
+            </ul>
+        </div>
+
+        <div class="questionContainer" id="question4">
+            <h2>Placeholder</h2>
+            <!-- make <ul> element to contain the answers -->
+            <ul class="answerList" id="answers4">
+                <!-- remember to match correct answer to rightAnswer -->
+                <li><button type="submit" class="answer wrongAnswer">Lock</button></li>
+                <li><button type="submit" class="answer rightAnswer">Value</button></li>
+                <li><button type="submit" class="answer wrongAnswer">Variable</button></li>
+                <li><button type="submit" class="answer wrongAnswer">Array</button></li>
+            </ul>
+        </div>
+    </div>
+
+     <!-- make an element to contain correct/incorrect notification -->
+    <div id="right-wrong">
+        Right or Wrong displayed
+    </div>
+    
+    <!-- make an element to contain field to submit initials -->
+    <!-- include option to submit by button press-->
+    <div id="initialsPrompt">
+        <label for="initials">Enter your initials!</label>
+        <input type="text" id="initials">
+        <button type="submit">Submit Initials</button>
+    </div>
+    <!-- Element contains the high score list -->
+    <div id="scoreboard">
+        <h2>High Scores</h2>
+        <!-- append scores to list after initials are entered-->
+        <ul id="scoreList">
+
+        </ul>
+        <br>
+        <!-- button to return to quiz setup -->
+        <button id="return">return to main page</button>
+        <!-- button to reset scoreboard -->
+        <button id="resetScore">Reset Scoreboard</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./assets/script.js">
+    </script>
+</body>
+</html>
