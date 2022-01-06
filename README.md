@@ -24,6 +24,8 @@ CSS
 
 Chris Muto
 
+Credit to Ava Steimle, Dad Luu and Oscar Silva for workshopping code during study sessions
+
 ## Planned Updates
 
 Any unfinished work will be updated until the project meets the original requirements.

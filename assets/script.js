@@ -158,6 +158,7 @@ function endGame () {
 function loadScoreboard() {
     quizBody.style.display = "none";
     scoreboard.style.display = "unset";
+    initialsPrompt.style.display = "none";
 }
 
 //creates a new list item for a high score
