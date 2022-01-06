@@ -135,15 +135,18 @@ function nextQuestion() {
     i++;
 }
 
+//reveals the target element
 function showElement(num) {
     num.style.display = "unset";
 }
 
+//hides the target element
 function hideElement(num) {
     num.style.display = "none";
 
 }
 
+//On end of game, clears visible elements and stops timer, then shows initials prompt
 function endGame () {
     hideElement(quizBody);
     hideElement(rightWrong);
@@ -151,7 +154,14 @@ function endGame () {
     showElement(initialsPrompt);
 }
 
+//clears the entire body of the quiz and reveals the scoreboard
 function loadScoreboard() {
     quizBody.style.display = "none";
     scoreboard.style.display = "unset";
+}
+
+//creates a new list item for a high score
+function addScore() {
+    //create another list item
+    scoreboard.appendChild()
 }
