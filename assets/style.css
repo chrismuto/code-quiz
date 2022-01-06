@@ -75,3 +75,10 @@ li button {
     text-align: center;
     display: none;
 }
+
+#scoreList li {
+    margin: auto;
+    width: 30%;
+    border: 1px solid purple;
+    border-collapse: collapse;
+}

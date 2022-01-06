@@ -2,6 +2,7 @@
 var timerEl = document.querySelector("#timer");
 var highScoreButtonEl = document.querySelector("#highScoreButton");
 var startButtonEl = document.querySelector("#startButton");
+var returnButtonEl = document.querySelector("#return");
 var answerListEl = document.querySelector(".answerList");
 var answerListEl2 = document.querySelector("#answers2");
 var answerListEl3 = document.querySelector("#answers3");
@@ -27,7 +28,18 @@ var question4 = document.querySelector("#question4");
 //put all question variables in an array to be run through
 var questionIndex = [question1, question2, question3, question4];
 
+//displays high score board
+highScoreButtonEl.addEventListener("click", function(event) {
+    loadScoreboard();
+    showElement(returnButtonEl);
+})
 
+//returns from scoreboard to main page
+returnButtonEl.addEventListener("click", function(event) {
+document.getElementById("quizBody").style.display = "unset";
+})
+
+//starts quiz and timer
 startButtonEl.addEventListener("click", function(event) {
     hideElement(startButtonEl);
     timeInterval = setInterval( function() {
@@ -107,7 +119,7 @@ initialsPrompt.addEventListener("submit", function(event) {
     var initials = form.querySelector("button.submit");
     localStorage.setItem(timeLeft, initials);
     showElement(scoreboard);
-    event.preventDefault()
+    event.preventDefault();
 })
 
 //on activating function this hides the current question and makes the next question visible
@@ -137,4 +149,9 @@ function endGame () {
     hideElement(rightWrong);
     clearInterval(timeInterval);
     showElement(initialsPrompt);
+}
+
+function loadScoreboard() {
+    quizBody.style.display = "none";
+    scoreboard.style.display = "unset";
 }
