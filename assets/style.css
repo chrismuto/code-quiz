@@ -46,18 +46,16 @@ div.questionContainer {
     width: 50%;
     text-align: left;
     display: none;
+    margin-top: 2em
 }
 
 li button {
     margin: 0.5em 0;
 }
 
-#question1 {
-    display: unset;
-}
-
 #right-wrong {
-    margin: 2em auto;
+    margin: 2em 25%;
+    text-align: center;
     width: 50%;
     border-top: 2px solid grey;
     font-style: italic;
@@ -69,6 +67,7 @@ li button {
 
 #initialsPrompt {
     text-align: center;
+    margin-left: 40%;
     display: none;
 }
 

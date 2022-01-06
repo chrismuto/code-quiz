@@ -3,63 +3,138 @@ var timerEl = document.querySelector("#timer");
 var highScoreButtonEl = document.querySelector("#highScoreButton");
 var startButtonEl = document.querySelector("#startButton");
 var answerListEl = document.querySelector(".answerList");
+var answerListEl2 = document.querySelector("#answers2");
+var answerListEl3 = document.querySelector("#answers3");
+var answerListEl4 = document.querySelector("#answers4");
 var rightWrong = document.querySelector("#right-wrong");
 var initialsPrompt = document.querySelector("#initialsPrompt");
-var button = document.querySelector(".answer");
-var endGame = false;
+var answerButton = document.querySelector(".answer");
+var rightAnswer = document.querySelector(".rightAnswer");
+var wrongAnswer = document.querySelector(".wrongAnswer");
+var quizBody = document.querySelector("#quizBody");
+var scoreboard = document.querySelector("#scoreboard");
+var isWin = false;
+var timeLeft = 75;
+var i = 0;
+var timeInterval;
 
-var timeLeft = 75
-var timeInterval = setInterval( function() {
-    if (timeLeft > 0) {
-        timerEl.textContent = timeLeft;
-        timeLeft--;
-    }
-    if else {
-        //array of questions is finished
+//set each question div in the HTML as a variable
+var question1 = document.querySelector("#question1");
+var question2 = document.querySelector("#question2");
+var question3 = document.querySelector("#question3");
+var question4 = document.querySelector("#question4");
+
+//put all question variables in an array to be run through
+var questionIndex = [question1, question2, question3, question4];
+
+
+startButtonEl.addEventListener("click", function(event) {
+    hideElement(startButtonEl);
+    timeInterval = setInterval( function() {
+        if (timeLeft > 0) {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+        }
+        if (timeLeft <= 0) {
         endGame();
-    }
-    else {
-        clearInterval(timeInterval);
+        }
+        else if (i > questionIndex.length) {
         endGame();
-    }
+        }
+        }, 500)
+        nextQuestion();
 })
 
-// function hideElement(num) {
-//     num.attr("display", "none");
-// }
-// function testFunction(event) {
-//     if (answerListEl.answer.contains(".rightAnswer")) {
-//         rightWrong.textContent = "Correct!";
-//         rightWrong.attr("display", "unset");
-//         setTimeout (hideElement, 500);
-//     }
-// }
-// button.addEventListener('click', testFunction);
+//event listener for first set of answers
+answerListEl.addEventListener("click", function(event) {
+    if (event.target.matches(".rightAnswer")) {
+    }
+    showElement(rightWrong);
+    rightWrong.textContent = "Right!";
+    if (event.target.matches(".wrongAnswer")) {
+        timeLeft = timeLeft -10;
+        showElement(rightWrong);
+        rightWrong.textContent = "Wrong!";
+    }
+    nextQuestion();
+})
 
-//     displayLetterEl.addClass('letter');
-  
-//     // get letter from clicked letter button's `data-letter` attribute and use it for display
-//     displayLetterEl.text($(event.target).attr('data-letter'));
-//     displayEl.append(displayLetterEl);
-//   );
-//make separate arrays containing the possible answers for each question
-//answer arrays must connect to the right question
-//make a function to start the quiz
-//check timer every second, if <=0 then end quiz
-//make a function to display question and answers
-//display first question
-//when a question is displayed, display the matching possible answers
-//to display answers, append li elements to the ul element
-//use a delegate event to make answers selectable
-//check if answer is correct
-//if answer is correct, display correct, else display wrong and reduce timer
-//once answered, remove question from element => use a function to move up 1 in an index, check chp4 lession 18 bubbling event
-//display next question
-//repeat answer process
-//check timer after each question, if <= 0 end quiz
-//if there is still time when all questions are answered end quiz
-//at end of quiz ask for initials for scoreboard
-//set timer value and initials as a paired value in local storage
-//go to scoreboard
-//scores on leaderboard should be sorted with highest score on top
-//to sort scores, do they need to be in an array or object?
+//event listener for second set of answers
+answerListEl2.addEventListener("click", function(event) {
+    if (event.target.matches(".rightAnswer")) {
+    }
+    showElement(rightWrong);
+    rightWrong.textContent = "Right!";
+    if (event.target.matches(".wrongAnswer")) {
+        timeLeft = timeLeft -10;
+        showElement(rightWrong);
+        rightWrong.textContent = "Wrong!";
+    }
+    nextQuestion();
+})
+
+//event listener for third set of answers
+answerListEl3.addEventListener("click", function(event) {
+    if (event.target.matches(".rightAnswer")) {
+    }
+    showElement(rightWrong);
+    rightWrong.textContent = "Right!";
+    if (event.target.matches(".wrongAnswer")) {
+        timeLeft = timeLeft -10;
+        showElement(rightWrong);
+        rightWrong.textContent = "Wrong!";
+    }
+    nextQuestion();
+})
+
+//event listener for fourth set of answers
+answerListEl4.addEventListener("click", function(event) {
+    if (event.target.matches(".rightAnswer")) {
+    }
+    showElement(rightWrong);
+    rightWrong.textContent = "Right!";
+    if (event.target.matches(".wrongAnswer")) {
+        timeLeft = timeLeft -10;
+        showElement(rightWrong);
+        rightWrong.textContent = "Wrong!";
+    }
+    nextQuestion();
+})
+
+//listener for the submission of initials, stores scores on local storage and makes new <li> for each score
+initialsPrompt.addEventListener("submit", function(event) {
+    hideElement(promptInitials);
+    var initials = form.querySelector("button.submit");
+    localStorage.setItem(timeLeft, initials);
+    showElement(scoreboard);
+    event.preventDefault()
+})
+
+//on activating function this hides the current question and makes the next question visible
+function nextQuestion() {
+    var index = questionIndex;
+    if (i === 0) {
+        showElement(index[i]);
+    }
+    if (0 < i && i < index.length) {
+        hideElement(index[i-1]);
+        showElement(index[i]);
+    }
+    i++;
+}
+
+function showElement(num) {
+    num.style.display = "unset";
+}
+
+function hideElement(num) {
+    num.style.display = "none";
+
+}
+
+function endGame () {
+    hideElement(quizBody);
+    hideElement(rightWrong);
+    clearInterval(timeInterval);
+    showElement(initialsPrompt);
+}
