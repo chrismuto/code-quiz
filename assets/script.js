@@ -115,11 +115,11 @@ answerListEl4.addEventListener("click", function(event) {
 
 //listener for the submission of initials, stores scores on local storage and makes new <li> for each score
 initialsPrompt.addEventListener("submit", function(event) {
-    hideElement(promptInitials);
-    var initials = form.querySelector("button.submit");
+    event.preventDefault();
+    hideElement(initialsPrompt);
+    var initials = document.querySelector("#initials").value.trim();
     localStorage.setItem(timeLeft, initials);
     showElement(scoreboard);
-    event.preventDefault();
 })
 
 //on activating function this hides the current question and makes the next question visible
