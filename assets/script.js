@@ -14,10 +14,12 @@ var rightAnswer = document.querySelector(".rightAnswer");
 var wrongAnswer = document.querySelector(".wrongAnswer");
 var quizBody = document.querySelector("#quizBody");
 var scoreboard = document.querySelector("#scoreboard");
+var scoreList = document.querySelector("#scoreList");
 var isWin = false;
 var timeLeft = 75;
 var i = 0;
 var timeInterval;
+var highScores = [];
 
 //set each question div in the HTML as a variable
 var question1 = document.querySelector("#question1");
@@ -116,11 +118,22 @@ answerListEl4.addEventListener("click", function(event) {
 //listener for the submission of initials, stores scores on local storage and makes new <li> for each score
 initialsPrompt.addEventListener("submit", function(event) {
     event.preventDefault();
+    highScores = JSON.parse(localStorage.getItem("highscores"));
+    if (highScores === null) {
+        highScores = [];
+    }
     hideElement(initialsPrompt);
     var initials = document.querySelector("#initials").value.trim();
-    localStorage.setItem(timeLeft, initials);
+    newScore = {initials, timeLeft};
+    highScores.push(newScore);
+    localStorage.setItem("highscores", JSON.stringify(highScores));
     showElement(scoreboard);
+    loadScoreboard();
 })
+// set high scores as an array of objects
+// localStorage.setItem("highscores", JSON.stringify(highscores))
+// highscores = JSON.parse(localStorage.getItem("highscores"))
+// highscores ---> [{23: "DD"}, {61: "ST"}]
 
 //on activating function this hides the current question and makes the next question visible
 function nextQuestion() {
@@ -159,10 +172,16 @@ function loadScoreboard() {
     quizBody.style.display = "none";
     scoreboard.style.display = "unset";
     initialsPrompt.style.display = "none";
-}
-
-//creates a new list item for a high score
-function addScore() {
-    //create another list item
-    scoreboard.appendChild()
+    highScores= JSON.parse(localStorage.getItem("highscores"));
+    console.log(typeof(highScores));
+    // for (i = 0, i < highScores.length; i++;) {
+    // var newLi = document.createElement("li");
+    // newLi.textContent = highScores[i];
+    // scoreList.appendChild(newLi);
+    // }
+    for (var [initials, time] of highScores.entries(highScores[0])) {
+        var newLi = document.createElement("li");
+        newLi.textContent = (initials, time);
+        scoreList.appendChild(newLi);
+      }
 }
